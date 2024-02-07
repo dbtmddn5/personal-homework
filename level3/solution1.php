@@ -1,6 +1,4 @@
 <?php
-echo "<h2>Table</h2>";
-
 //配列
 $sales = array(
     array("ID" => 1, "product_id" => 47, "money" => "5,000", "item" => 1, "deleted_at" => "0000-00-00", "deleted_flg" => "0", "created_at" => "2022/1/4", "updated_at" => "0000-00-00"),
@@ -30,14 +28,57 @@ $maker = array(
     <title>Table</title>
 </head>
 <body>
+    <h1>Table1</h1>
 
+<?php
+echo "<table border = '1'>";
+echo "<tr bgcolor = 'lightgray'><th>deleted_at</th><th>created_at</th><th>updated_at</th><th>product_id</th><th>item</th></tr>";
+
+foreach($sales as $sl) {
+    echo "<tr>";
+    echo "<td>".$sl['deleted_at']."</td>";
+    echo "<td>".$sl['created_at']."</td>";
+    echo "<td>".$sl['updated_at']."</td>";
+    echo "<td>".$sl['product_id']."</td>";
+    echo "<td>".$sl['item']."</td>";
+    echo "</tr>";
+}
+
+echo "</table>";
+?>
+
+    <h1>Table2</h1>
+
+<?php
+echo "<table border = '1'>";
+echo "<tr bgcolor = 'lightgray'><th>deleted_at</th><th>created_at</th><th>updated_at</th><th>product_id</th><th>item</th><th>name</th></tr>";
+
+foreach($sales as $sl) {
+    echo "<tr>";
+    echo "<td>".$sl['deleted_at']."</td>";
+    echo "<td>".$sl['created_at']."</td>";
+    echo "<td>".$sl['updated_at']."</td>";
+    echo "<td>".$sl['product_id']."</td>";
+    echo "<td>".$sl['item']."</td>";
+
+    foreach($product as $prod) {
+        if($sl['product_id'] == $prod['ID']) {
+            echo "<td>".$prod['name']."</td>";
+        }
+    }
+    echo "</tr>";
+}
+
+echo "</table>";
+?>
+
+    <h1>Table3</h1>
 <?php
 echo "<table border='1'>";
 echo "<tr bgcolor = 'lightgray'><th>deleted_at</th><th>created_at</th><th>updated_at</th><th>product_id</th><th>item</th><th>name</th><th>maker_name</th></tr>";
 
 // 配列の要素をテーブルの行で出力
 foreach($sales as $sl) {
-
     echo "<tr>";
     echo "<td>".$sl['deleted_at']."</td>";
     echo "<td>".$sl['created_at']."</td>";
@@ -46,7 +87,7 @@ foreach($sales as $sl) {
     echo "<td>".$sl['item']."</td>";
 
     $maker_id = null;
-    
+
     foreach ($product as $prod) {
         if($sl['product_id'] == $prod['ID']) {
             echo "<td>".$prod['name']."</td>";
