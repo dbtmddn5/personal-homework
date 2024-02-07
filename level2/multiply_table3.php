@@ -25,8 +25,8 @@ echo "<table border=1>";
 
     //行ごと計算結果を表示
     for ($j = 1; $j <= 19; $j++) {
-        echo "<tr>";
         if(isPrime($j)) {
+            echo "<tr>";
             echo "<td bgcolor = 'lightgray'>$j</td>";
             for ($i = 1; $i <= 19; $i++) {
                 if(isPrime($i)) {
@@ -34,8 +34,8 @@ echo "<table border=1>";
                     echo "<td>$p</td>";
                 }
             }
+            echo "</tr>";
         }
-        echo "</tr>";
     }
 echo "</table>";
 ?>
